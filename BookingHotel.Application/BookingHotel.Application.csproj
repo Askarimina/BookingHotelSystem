@@ -10,4 +10,17 @@
     <ProjectReference Include="..\BookingHotel.Domain\BookingHotel.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="DTOs\Auth\" />
+    <Folder Include="DTOs\Hotel\" />
+    <Folder Include="DTOs\Booking\" />
+    <Folder Include="DTOs\Room\" />
+    <Folder Include="Interfaces\Security\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

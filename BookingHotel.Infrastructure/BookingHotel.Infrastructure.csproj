@@ -11,4 +11,12 @@
     <ProjectReference Include="..\BookingHotel.Domain\BookingHotel.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Identity\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Persistence\Configurations\" />
+    <Folder Include="Persistence\Migrations\" />
+    <Folder Include="Persistence\Seed\" />
+  </ItemGroup>
+
 </Project>
