@@ -2,6 +2,7 @@ bin/
 obj/
 .vs/
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
 
