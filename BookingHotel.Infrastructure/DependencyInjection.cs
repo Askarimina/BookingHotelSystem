@@ -1,4 +1,9 @@
-﻿using BookingHotel.Infrastructure.Persistence;
+﻿
+
+
+using BookingHotel.Application.Interfaces.Repositories;
+using BookingHotel.Infrastructure.Persistence;
+using BookingHotel.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +22,13 @@ public static class DependencyInjection
         {
             options.UseSqlServer(connectionString);
         });
+
+        services.AddScoped<IHotelRepository, HotelRepository>();
+        services.AddScoped<IRoomRepository, RoomRepository>();
+        services.AddScoped<IBookingRepository, BookingRepository>();
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
         return services;
     }
