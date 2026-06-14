@@ -13,13 +13,12 @@
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="DTOs\Auth\" />
-    <Folder Include="DTOs\Hotel\" />
-    <Folder Include="DTOs\Booking\" />
-    <Folder Include="DTOs\Room\" />
     <Folder Include="Interfaces\Security\" />
-    <Folder Include="Interfaces\Services\" />
     <Folder Include="Validators\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,15 @@
 using BookingHotel.Infrastructure;
+using BookingHotel.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -24,3 +28,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
