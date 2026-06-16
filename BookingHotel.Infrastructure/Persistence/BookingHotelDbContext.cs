@@ -1,11 +1,15 @@
 ﻿using BookingHotel.Domain.Entities;
+using BookingHotel.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingHotel.Infrastructure.Persistence;
 
-public sealed class BookingHotelDbContext : DbContext
+public sealed class BookingHotelDbContext
+    : IdentityDbContext<ApplicationUser>
 {
-    public BookingHotelDbContext(DbContextOptions<BookingHotelDbContext> options)
+    public BookingHotelDbContext(
+        DbContextOptions<BookingHotelDbContext> options)
         : base(options)
     {
     }
@@ -20,6 +24,7 @@ public sealed class BookingHotelDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BookingHotelDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(
+            typeof(BookingHotelDbContext).Assembly);
     }
 }

@@ -12,8 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="DTOs\Auth\" />
-    <Folder Include="Interfaces\Security\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 
