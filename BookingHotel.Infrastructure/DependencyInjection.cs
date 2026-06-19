@@ -1,6 +1,7 @@
-﻿using BookingHotel.Application.Interfaces.Repositories;
+﻿using System.Text;
+using BookingHotel.Application.Interfaces.Repositories;
 using BookingHotel.Application.Interfaces.Security;
-using BookingHotel.Application.Services;
+using BookingHotel.Application.Interfaces.Services;
 using BookingHotel.Infrastructure.Identity;
 using BookingHotel.Infrastructure.Persistence;
 using BookingHotel.Infrastructure.Repositories;
@@ -10,8 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using BookingHotel.Application.Interfaces.Services;
 
 namespace BookingHotel.Infrastructure;
 
@@ -38,8 +37,11 @@ public static class DependencyInjection
 
             options.User.RequireUniqueEmail = true;
         })
-            .AddEntityFrameworkStores<BookingHotelDbContext>()
-            .AddDefaultTokenProviders();
+        .AddEntityFrameworkStores<BookingHotelDbContext>()
+        .AddDefaultTokenProviders();
+
+        services.Configure<JwtSettings>(
+            configuration.GetSection("Jwt"));
 
         var jwtKey = configuration["Jwt:Key"];
         var issuer = configuration["Jwt:Issuer"];
@@ -56,21 +58,21 @@ public static class DependencyInjection
             options.DefaultChallengeScheme =
                 JwtBearerDefaults.AuthenticationScheme;
         })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters =
-                    new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = issuer,
-                        ValidAudience = audience,
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(jwtKey))
-                    };
-            });
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters =
+                new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = issuer,
+                    ValidAudience = audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtKey))
+                };
+        });
 
         services.AddAuthorization();
 
@@ -81,43 +83,7 @@ public static class DependencyInjection
 
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IAuthService, AuthService>();
+
         return services;
     }
 }
-
-
-
-
-
-//using BookingHotel.Application.Interfaces.Repositories;
-//using BookingHotel.Infrastructure.Persistence;
-//using BookingHotel.Infrastructure.Repositories;
-//using Microsoft.EntityFrameworkCore;
-//using Microsoft.Extensions.Configuration;
-//using Microsoft.Extensions.DependencyInjection;
-
-//namespace BookingHotel.Infrastructure;
-
-//public static class DependencyInjection
-//{
-//    public static IServiceCollection AddInfrastructure(
-//        this IServiceCollection services,
-//        IConfiguration configuration)
-//    {
-//        var connectionString = configuration.GetConnectionString("DefaultConnection");
-
-//        services.AddDbContext<BookingHotelDbContext>(options =>
-//        {
-//            options.UseSqlServer(connectionString);
-//        });
-
-//        services.AddScoped<IHotelRepository, HotelRepository>();
-//        services.AddScoped<IRoomRepository, RoomRepository>();
-//        services.AddScoped<IBookingRepository, BookingRepository>();
-
-//        services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
-//        return services;
-//    }
-//}

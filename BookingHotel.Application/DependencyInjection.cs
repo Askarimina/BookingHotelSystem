@@ -12,7 +12,7 @@ public static class DependencyInjection
         services.AddScoped<IRoomService, RoomService>();
         services.AddScoped<IBookingService, BookingService>();
 
-        services.AddScoped<IAuthService, AuthService>();
+        //services.AddScoped<IAuthService, AuthService>();
 
         return services;
     }
