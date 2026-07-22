@@ -192,9 +192,10 @@ For SQL Server authentication, you can use:
 
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=BookingHotelDb;User Id=your-user;Password=your-password;TrustServerCertificate=True"
+   "ConnectionStrings": {
+    "DefaultConnection": ""
   }
+
 }
 ```
 
@@ -206,11 +207,12 @@ Add the JWT settings to `appsettings.json`.
 
 ```json
 {
+
   "Jwt": {
-    "Key": "your-development-secret-key",
-    "Issuer": "BookingHotelAPI",
-    "Audience": "BookingHotelClient",
-    "DurationInMinutes": 60
+    "Key": "",
+    "Issuer": "BookingHotel.API",
+    "Audience": "BookingHotel.Client",
+    "ExpiryMinutes": 60
   }
 }
 ```
@@ -336,7 +338,7 @@ This project is under active development and is used to improve and demonstrate 
 
 ## Author
 
-**Mina**
+**Mahboubeh Askari**
 
 Backend Developer focused on C#, ASP.NET Core, REST APIs, SQL Server, and Clean Architecture.
 
