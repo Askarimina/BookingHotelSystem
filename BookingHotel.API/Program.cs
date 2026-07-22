@@ -2,7 +2,7 @@ using BookingHotel.Application;
 using BookingHotel.Infrastructure;
 using BookingHotel.Infrastructure.Persistence.Seed;
 using Microsoft.AspNetCore.Identity;
-//using Microsoft.OpenApi.models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
