@@ -183,7 +183,7 @@ Open the `appsettings.json` file inside the API project and update the SQL Serve
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=BookingHotelDb;Trusted_Connection=True;TrustServerCertificate=True"
+    "DefaultConnection": ""
   }
 }
 ```
