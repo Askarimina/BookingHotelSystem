@@ -174,7 +174,7 @@ git clone https://github.com/Askarimina/BookingHotelSystem.git
 cd BookingHotelSystem
 ```
 
-Replace https://github.com/Askarimina/BookingHotelSystem with your GitHub username.
+https://github.com/Askarimina/BookingHotelSystem with your GitHub username.
 
 ### Configure the Database
 
