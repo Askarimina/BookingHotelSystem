@@ -2,6 +2,7 @@ using BookingHotel.Application;
 using BookingHotel.Infrastructure;
 using BookingHotel.Infrastructure.Persistence.Seed;
 using Microsoft.AspNetCore.Identity;
+//using Microsoft.OpenApi.models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
