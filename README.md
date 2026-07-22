@@ -174,8 +174,6 @@ git clone https://github.com/Askarimina/BookingHotelSystem.git
 cd BookingHotelSystem
 ```
 
-https://github.com/Askarimina/BookingHotelSystem with your GitHub username.
-
 ### Configure the Database
 
 Open the `appsettings.json` file inside the API project and update the SQL Server connection string.
